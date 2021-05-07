@@ -1,94 +1,17 @@
 import requests
-#list_names = ['O.C. Chen', 'Marawan', 'Hannah', 'Liam', 'Kelly', 'Jessica', 'Jacob', 'Martin', 'Harry', 'Rachel', 'Katherine', 'Annabelle', 'Dariana', 'Michael', 'Jason', 'Michelle', 'Diyambah', 'Dany', 'Aneri', 'Hunter', 'Adam', 'Mei', 'Noah', 'Kunal', 'Ruzan', 'Will', 'Amanda', 'Hannah', 'Jared', 'Nicole', 'Katherine', 'May', 'Yifei', 'Michelle', 'Manavi', 'Jonah', 'Ethan', 'Matteo', 'Wilson', 'Kyu', 'Joseph', 'Andrew', 'Sophie', 'Eleanor', 'Jessica', 'Iris', 'Alex', 'Talia', 'Sita', 'Alden', 'Tina', 'Gabe', 'Emily']
-#list_ph_nos = ['470-529-6550', '662-380-2469', '662-418-8212', '404-369-9707', '770-891-0327', '917-488-6021', '408-828-3935', '470-529-4174', '916-425-9389', '469-441-4974', '408-806-8231', '404-316-0375', '561-859-8087', '561-531-4350', '415-638-7207', '4085689148', '518-258-9764', '561-402-0407', '561-809-1155', '931-337-5504', '513-544-8236', '678-300-3331', '404-936-8607', '516-532-4074', '478-508-5461', '720-841-1912', '240-389-8164', '512-838-3399', '312-848-5002', '470-334-9760', '412-576-0022', '850-228-0629', '951-772-4019', '925-918-5332', '304-276-6976', '720-412-1987', '404-861-8812', '617-947-7426', '617-610-0779', '402-307-2980', '631-487-4147', '908-963-0198', '818-618-5398', '859-576-5109', '917-488-6021', '703-597-3664', '2027168799', '352-222-5993', '206-552-3779', '516-507-9157', '404-431-7523', '865-607-8804', '408-355-0067']
-
-#list_names = ['Lexy', 'Ruby', 'Ava', 'Jonathan', 'Ethan', 'Kathy', 'Emily', 'Jaclyn', 'Maya', 'Sarah', 'Minna', 'Michelle', 'Harrison', 'Doowon', 'Rodrigo', 'Jareer', 'Orion', 'Adam', 'Grace', 'Sofia', 'Kate', 'Emma', 'Silas', 'Jenny', 'Nichole', 'Maya', 'Rachel', 'Noah', 'Aidan', 'Jared', 'Eric', 'Griffin', 'Grant', 'Paolo', 'Austin', 'Richard', 'Charlie', 'Joshua', 'Jacob', 'Marissa', 'Carol', 'Genesis', 'Hannah', 'Precious', 'Crystal', 'Diana', 'Abby', 'Tiffany', 'Rachel', 'Cicely', 'Elva', 'Zachary', 'JD', 'Daryn', 'Sara', 'Michael', 'Chris', 'Brian', 'Daniel', 'Neel', 'Wensy', 'Carter', 'Cobi', 'Naji', 'Noah', 'Danny', 'Samuel', 'Hiyori', 'Jessie', 'Carolyn', 'Sydney', 'Noa', 'Christine', 'Ava', 'Natalie', 'Anna', 'Laura', 'Isabela', 'Libby', 'Lena', 'Madison', 'Mia', 'Rachel', 'Vanessa', 'Shamirah', 'Jake', 'Brian', 'Sam', 'Eli', 'Jacob', 'Xavier', 'Hailey', 'Alexandra', 'lynn', 'Danielle', 'Karen', 'Sarah', 'Margaret', 'Maya', 'Jessie', 'Maya', 'Sofia', 'Amelia', 'Rachel', 'Ezra', 'Jonathan', 'Brian', 'Adam', 'Cobi', 'Will', 'Josef', 'Jake', 'Brian', 'Sarah', 'Elva', 'JD', 'Adam', 'Nichole', 'Isabela', 'Libby', 'Shamirah', 'Rachel', 'Orion', 'Jacki', 'Mia', 'Minna', 'Margaret', 'Anna', 'Preity', 'Kayla', 'Fareed', 'Sofia', 'Kacper', 'Amaia', 'Agnes', 'Simren', 'Trisha', 'Austin', 'Esha', 'Jaden', 'Mohammad', 'Miguel', 'Wilson', 'Stephanie', 'Victoria', 'Alexandra', 'Mohammad', 'Amaia']
-#list_ph_nos = [7173533993, 6127508196, 5014141404, 4059056181, 4058023272, 8645179702, 7209408419, 9735242248, 9178291724, 9542325656, 7036354112, 2404000287, 3362097792, 4702488260, 8633379879, 8036297864, 7176969572, 3107215479, 9179291565, 6127041145, 4046426603, 9083311892, 9492957108, 7706392159, 2624089355, 6168269182, 4694414974, 2296333533, 2032742642, 4047103443, 4704537709, 3044336193, 6152098155, 6783309747, 7049531220, 6102032783, 5164063274, 5169870780, 4088283935, 7082446857, 4696679480, 9544493129, 5128383399, 6786686690, 6467750773, 3127742855, 6094239083, 4045659454, 4072693008, 4789571316, 8592851390, 2032582714, 8474406380, 9143306587, 5166989025, 6466342163, 7375291940, 6462707508, 6307470250, 6503500601, 6468269471, 5129949177, 9193701036, 5102309855, 8584328750, 9148066901, 7023066201, 4709910524, 2016611937, 6788824114, 4806520601, 8479643485, 2032740495, 9187703544, 9522213148, 6179992884, 4046254401, 9512553549, 3392365084, 9702326550, 5165893369, 3013355727, 2015666859, 3108671504, 8623715606, 6785263552, 9738421119, 4042185044, 4708093312, 7702651211, 6786344710, 2035059494, 9175746737, 8016713639, 4408296116, 3144886623, 4966620175, 7209650921, 5713167521, 4047649818, 2242778986, 3127316294, 2066050913, 2015666859, 2156872963, 9145257586, 9738421119, 3107215479, 9193701036, 4704953224, 2692456399, 6785263552, 6462707508, 4966620175, 8592851390, 8474406380, 3107215479, 2624089355, 9512553549, 3392365084, 8623715606, 2015666859, 7176969572, 9144799129, 3013355727, 7036354112, 7209650921, 6788766130, 8132901356, 8134687729, 6306408056, 4047474117, 16788011554, 9783407368, 4702325590, 4047900368, 6693336646, 7024937290, 8136133773, 4046603013, 4703099224, 8297418141, 9082104572, 4706516530, 4046613485, 3055865581, 4703099224, 9783407368]
-
-#list_names = ['Adam', 'Nichole', 'Isabela', 'Libby', 'Shamirah', 'Rachel', 'Orion', 'Jacki', 'Mia', 'Minna', 'Margaret', 'Anna', 'Preity', 'Kayla', 'Fareed', 'Sofia', 'Kacper', 'Amaia', 'Agnes', 'Simren', 'Trisha', 'Austin', 'Esha', 'Jaden', 'Mohammad', 'Wilson', 'Stephanie', 'Victoria', 'Alexandra', 'Mohammad', 'Amaia']
-#list_ph_nos = [3107215479, 2624089355, 9512553549, 3392365084, 8623715606, 2015666859, 7176969572, 9144799129, 3013355727, 7036354112, 7209650921, 6788766130, 8132901356, 8134687729, 6306408056, 4047474117, 16788011554, 9783407368, 4702325590, 4047900368, 6693336646, 7024937290, 8136133773, 4046603013, 4703099224, 9082104572, 4706516530, 4046613485, 3055865581, 4703099224, 9783407368]
-
-
-#list_names = ['Abby', 'Hannah', 'Savannah', 'Jenna', 'Emily', 'Heather', 'Olivia', 'Ruth', 'Athena', 'Rachael', 'Jenna', 'Orly', 'Sasha', 'Zuhra', 'Anna', 'Regan', 'Kayla', 'Anna', 'Alexa', 'Isabel', 'Paige', 'Helen', 'Rachel', 'Alaina']
-#list_ph_nos = [5088409696, 9148605442, 9087233225, 5167847499, 2816304137, 7818012280, 4156940123, 6159758939, 3019973606, 6316267783, 9179696221, 2818323340, 2483309790, 3475536518, 2034513341, 2148839783, 9175975995, 7862141903, 3107178958, 6464832566, 9087053890, 6155640128, 9175831524, 8608175324]
-
-#list_names = ['Rachel', 'Lola', 'Elizabeth', 'Eve', 'Tallie', 'Cassidy', 'Jenna', 'Emma', 'Grace', 'Elizabeth', 'Aiden', 'Wendy', 'Layla', 'Jenna', 'Holly', 'Mary', 'Ria', 'Eliza', 'Charlotte', 'Olga', 'Natalie', 'Siena', 'Naomi', 'Grace']
-#list_ph_nos = [4693949896, 4157560919, 9735582581, 9179323851, 2013961395, 3019198996, 9176797438, 7249911743, 4807291711, 6099222455, 4077669218, 4046449753, 2034512049, 9146299883, 8579981247, 6159758105, 6785581064, 2015800399, 9148446576, 6467713724, 5619268555, 9177670519, 2246320619, 5037891678]
-
-#list_names = ['Emma', 'Isabella', 'Sophia', 'Reese', 'Sabrina', 'Lily', 'Jessie', 'Camila', 'Ella', 'Remi', 'Gaige', 'Ashley', 'Christi', 'Daniela', 'Alizabeth', 'Erica', 'Isabella', 'Bonnie', 'Natalie', 'Oona', 'Emma', 'Becky', 'Sara', 'Clare', 'Emily', 'Emma', 'Haley', 'Amanda', 'Maddy']
-#list_ph_nos = [3176279007, 4123035560, 9177041373, 9783198116, 6102338461, 6314613753, 2016611937, 9174467111, 8132267721, 5165879399, 3475220200, 9734771574, 9548155636, 9544657251, 3156901733, 4403465208, 2038329699, 5166600809, 5163178763, 3472688275, 9147158077, 8472171001, 3109680255, 2029978978, 6789823876, 2566012703, 8563753292, 9736654953, 4237481375]
-
-#list_names = ['Temi', 'Sara', 'Ashley', 'Kiley', 'Melissa', 'Hannah', 'Lauren I.', 'Katherine', 'Aashna', 'Lauren', 'Becca', 'Pippa', 'Mirabelle', 'Jordana', 'Lara', 'Catherine', 'Sophie', 'Rayna', 'Grace', 'Lillian', 'Maya', 'Margaret', 'Sofia', 'Olivia', 'Ivy', 'Gigi', 'Sean', 'Ellie', 'Libby', 'Alyssa', 'Sophia']
-#list_ph_nos = [2036449235, 4155354382, 5166735005, 2628440340, 9145009727, 9172140395, 7576330697, '(708) 714-4091', '(404) 402-6992', '(502) 905-4008', '(978) 273-8900', 9142173157, 3109027344, 9143741887, 6507728414, 2055334522, 9172076365, 5612358465, 9179291565, 4702591229, 9178291724, 7209650921, 6127041145, 5134449174, 3107309020, 8132408177, 2017493962, 6263196294, 3392365084, 9174800650, 2678646691]
-
-
-#Delta Phi Epsilon
-#list_names = ['Rachel', 'Stephanie', 'Ciara', 'Julia ', 'Katerina', 'Edith ', 'Nicolette', 'Sabrina', 'Giovanna', 'Madeline', 'Heather', 'Lizzie', 'Claire', 'Radha', 'Arriana', 'Claire', 'Dee']
-#list_ph_nos = [9045563084, 6788489839, 6176310136, 5613865504, 2407555520, 5129950795, 9178819218, 9495172413, 3057780541, 3364808351, 9199855425, 8475256858, 7133808850, 4044345150, 3476927301, 3014615868, 7708754043]
-
-#list_names = ['Heather', 'Lizzie', 'Claire', 'Radha', 'Arriana', 'Claire', 'Dee']
-#list_ph_nos = [9199855425, 8475256858, 7133808850, 4044345150, 3476927301, 3014615868, 7708754043]
-
-#list_names = ['Tedy', 'Kira', 'Gelsey ', "Ja'Kyla", 'Daisy', 'Eileen', 'Jasmin', 'Clare ', 'Anjali', 'Bella', 'Amanda', 'Tess', 'Evelyn', 'Kayla', 'Adriana', 'Eliana', 'Erin', 'Mystie', 'Tiffany']
-#list_ph_nos = ['4043957882', '4254298755', '8433712906', '6156894432', '3212746131', '6464836033', '8044998204', '4127705778', '9178546690', '6095795760', '7068519508', '3108807723', '2036443240', '3142583349', '4043948949', '9177031849', '6786417128', '8036179462', '9739978536']
-
-#list_names = ['Audra', 'Darcy', 'Carolyn', 'Gabriella', 'Kiera', 'Kelly', 'Abby', 'Sophia', 'Jenny', 'Clara Beth', 'Melanie', 'Maggie', 'Abby', 'Alexandra', 'Rachel', 'Julia ', 'Annabel', 'Raquel ', 'Stephanie', 'Carissa', 'Rayna', 'Shannon']
-#list_ph_nos = ['6784622915', '9087988849', '6788824114', '5129255136', '7753429515', '2039147808', '2562885341', '7708767105', '6268998646', '8507970504', '3108829755', '9143277469', '8567017036', '2024924071', '4089819854', '2023336893', '3012760835', '7869754855', '4084586563', '3034087983', '8132605935', '5108613999']
-
-#SDT
-#list_names = ['Jessica', 'Liza', 'Sophie', 'Anna', 'Rachel', 'Hailey', 'Jaime', 'Heather', 'Natalie', 'Jackie', 'Jenny', 'Alexa', 'Jen', 'Anna', 'Lindsay', 'Maddie', 'Marlee', 'Juliette', 'Dani', 'Jasmine', 'Lauren', 'Monica', 'Jillian', 'Eliana', 'Caleigh', 'Jessica', 'Alexa', 'Liana', 'Riana']
-#list_ph_nos = ['8186053681', '9178177740', '6502247703', '6149493077', '5619015002', '9544789412', '7815307181', '5166558763', '3106121204', '9083477642', '3018026525', '7876670757', '2675670762', '8476090418', '9084328444', '6317088681', '9148868336', '5619015194', '9548098373', '8589450107', '6106375486', '5615787973', '2013342218', '2489967888', '9178821768', '2168168806', '5165438176', '9176482884', '6179454180']
-
-#list_names = ['Hridansh', 'Jessica', 'Kate', 'Jordan', 'Jordan', 'Lauren', 'Nicole ', 'Nicole', 'Emily', 'Lauren', 'Peri', 'Carly', 'Emma', 'Ilana', 'Sami', 'Sofia', 'Kendall', 'Sydney', 'Rachel', 'Ashley', 'Sophia', 'Dani', 'Josie', 'Rachel', 'Rebecca ', 'Allison', 'Sabra', 'Alison', 'Sarah', 'Emily', 'Lilah']
-#list_ph_nos = ['8722337968', '2817939792', '5135816598', '9148264119', '9177341749', '8139493077', '8472262356', '7327787465', '9737382808', '9735254941', '2019216021', '8473059496', '6465312907', '6176782447', '2019814116', '6107426010', '8327943623', '9144208542', '4044446024', '8477784267', '9179217298', '6128073860', '9148448325', '2153596428', '5166523341', '2155007219', '3054956787', '5612891253', '6469428980', '4436993339', '9145229589']
-
-#list_names = ['Hridansh', 'Dina', 'Hannah', 'Avery', 'Jaclyn', 'Jordan', 'Rachel', 'Payton', 'Erika', 'Nicole', 'Maya', 'Maddie', 'Ariella', 'Carly', 'Ellie', 'Leah', 'Rachel', 'Shaina', 'Lauren', 'Adia', 'Lyndsey', 'Hailey', 'Sasha', 'Rebecca', 'Liadan', 'Nicole', 'Rachel', 'Daryn', 'Madison', 'Sara', 'Alex', 'Danielle', 'Hannah', 'Mia', 'Nicole']
-#list_ph_nos = ['8722337968', '9144503474', '3342248574', '9177424001', '3017427576', '4844313867', '2674249445', '4698656378', '2484942686', '9178250180', '12242778986', '2012486545', '6123002788', '3108921029', '2244229540', '5165800340', '2015666859', '6109094144', '3146233880', '8643821929', '7327540451', '2035059494', '9173449045', '7872436353', '4048249612', '9144629397', '4694414974', '9143306587', '3055869375', '5166989025', '9175746737', '9174947669', '6107578578', '9543285406', '6025401315']
-
-
-#ADPI:
-#list_names = ['Hridansh', 'Amanda', 'Anna', 'Anna', 'Anna', 'Anna', 'Caitlyn', 'Cara', 'Caroline', 'Cassandra', 'Catherine', 'Charlotte', 'Eleanor', 'Elise', 'Elizabeth', 'Gabriela', 'Gabriella', 'Jamie', 'Jenny', 'Jory']
-#list_ph_nos = ['8722337968','6366889760', '7632482804', '9045578645', '6304185370', '2032168540', '8127880963', '2676156383', '4109808442', '2818061230', '4084722632', '9123468522', '9253897053', '3195317689', '9178439172', '7206330463', '7139627615', '7348343370', '9162885100', '6025151719']
-
-#list_names = ['Hridansh', 'Joesphine', 'Kaitlyn', 'Kashvi', 'Katie', 'Krista', 'Marlie', 'Mia', 'Molly', 'Paige', 'Riley', 'Samantha', 'Sofia', 'Tia']
-#list_ph_nos = ['8722337968', '9174888399', '3013320029', '6789089705', '8572188404', '9179131716', '2159153949', '3018520532', '8435323068', '6318307253', '6128059102', '6363850711', '8622355225', '6616661946']
-
-
-#Refugee Revive
-#list_names = ['Khadeeja', 'Sophie', 'Zijian', 'Lillian', 'Hannah', 'Caroline', 'Saaya', 'Ayla', 'Sanne', 'Aya', 'Matthew', 'Jessica', 'Lauren', 'Sophia', 'Maya']
-#list_ph_nos = [4049876258, 9172076365, 6784317475, 6087706807, 4404763864, 4695868993, 4402120447, 4047022955, 4089309902, 4129968014, 8479717082, 4049847806, 6784728963, 4349626356, 9176265626]
-
-
-#list_names = ['Rhea', 'Hridansh']#, 'Ananya']['Hridansh']#
-#list_ph_nos = [9546818638, 8722337968]#, 4703130721]['8722337968']#
+#list_names = ['Mr XYZ', 'Hridansh'] 
+#list_ph_nos = [RAN-DOM-NUMB, 8722337968]
 
 if len(list_names) == len(list_ph_nos):
   for i in range(len(list_names)):
     resp = requests.post('https://textbelt.com/text', {
       'phone': list_ph_nos[i],
-      'message': f'Hi {list_names[i]} (again haha). \nSorry for the change in number from last week! Got your number from Seb and wanted to say thank you so much for the support and vote the last election cycle! \nVoting is now LIVE for the runoffs! Please vote Rhea Kumar for SGA President and Nick Paschetto for SGA Vice President one more time! We hope to have a lasting relationship with Refugee Revive and to create a more "perfect" Emory next year! \nIt takes a few seconds to vote using this link: https://tinyurl.com/rheanick21',
+      'message': f'Hi {list_names[i]} (again haha). \nMESSAGE HERE',
       'replyWebhookUrl':f'https://my.site/api/handleSmsReply',
-      'key': '4e849094e47307148a0332ca914d027cd08d1b6axBOXp6mLbCMUBvOUT6jW0QFK6',
+      'key': '4e849094e47307148a0332ca914d027cd08d1b6axBOXp6mLbCMUBvOUT6jW0QFK6', #Buy an API key from textbelt.com (this one has expired)  https://textbelt.com/
     })
     print(resp.json())
 
 
 #b25fd2f6134f0c42d63ec586399102f67557dc2cdARhR5izAU7j0EPqY5qpSjkJt
 #4e849094e47307148a0332ca914d027cd08d1b6axBOXp6mLbCMUBvOUT6jW0QFK6
-
-
-#'Hi {list_names[i]}! Sorry for the number change! \nThank you so much for your support and vote last week! We are asking you to vote just one last time for run-offs! \nPlease vote Rhea Kumar for SGA President and Nick Paschetto for SGA VP! We really want to make the "perfect" Emory for you next year and promise to make sure your second-year consists spirit, tradition, support, community and excitement! \nWe want to advocate for your class next year! Use this link to vote R.N. https://tinyurl.com/rheanick21'
-#Hi {list_names[i]} (again haha). Sorry for the change in number from last week! \nGot your number from becky and wanted to say thank you so much for your support and vote last election cycle! \nVOTING IS NOW LIVE for run-offs, and you just have to voice your opinion one more time! Plesae vote Rhea Kumar for SGA President and Nick Paschetto for SGA Vice President, in the link below. \nWe hope to make you and Theta proud with our plans for positive and impactful change, while being the only candidates advocating for Greek Life! Vote R.N. :) https://tinyurl.com/rheanick21
-#Hi {list_names[i]} (again haha). Sorry for the change in number from last week! \nGot your number from nicolette and wanted to say thank you so much for your support and vote last election cycle! \nVOTING IS NOW LIVE for run-offs, and you just have to voice your opinion one more time! Please vote Rhea Kumar for SGA President and Nick Paschetto for SGA Vice President, in the link below. \nWe hope to make you and Delta Phi Epsilon proud with our plans for positive and impactful change, while being the only candidates advocating for a "reimagined" Greek Life and Emory! Vote R.N. :) https://tinyurl.com/rheanick21
-
-#SDT:
-#Hi {list_names[i]} (again haha). Sorry for the change in number from last week! \nGot your number from Monica and wanted to say thank you so much for your support and vote last election cycle! \nVOTING IS NOW LIVE for run-offs, and you just have to voice your opinion one more time! Please vote Rhea Kumar for SGA President and Nick Paschetto for SGA Vice President, in the link below. \nWe hope to make you and SDT proud with our plans for positive and impactful change, while being the only candidates advocating for Greek Life! Vote R.N. :) https://tinyurl.com/rheanick21
-#Heyyy {list_names[i]} (again haha). Sorry for annoying you and the the different \nnumber from last week! Got your number from Monica and wanted to say thank you so much for your support and vote last election cycle! \nVOTING IS OPEN for run-offs and closes TODAY 8 PM. Please vote Rhea Kumar for SGA President and Nick Paschetto for SGA Vice President, in the link below. \nWe hope to make you and SDT proud with our plans for positive and impactful change, while being the only candidates advocating for Greek Life! https://tinyurl.com/rheanick21
-#Hi {list_names[i]} \nSorry to bother but again got your number from Monica and wanted to say thank you so much for your support and vote last election cycle! \nVOTING IS OPEN for run-offs and closes TODAY 8 PM. Please vote Rhea Kumar for SGA President and Nick Paschetto for SGA Vice President, in the link below. \nWe hope to make you and SDT proud with our plans for positive and impactful change, while being the only candidates advocating for Greek Life!  https://tinyurl.com/rheanick21
-
-#ADPI:
-#Hi {list_names[i]} (again haha). \nSorry for the change in phone number from last week! Thank you so much for your support and vote last election cycle! \nVOTING CLOSES AT 8 PM for run-offs, and you just have to voice your opinion one more time! Please vote Rhea Kumar for SGA President and Nick Paschetto for SGA Vice President, in the link below. \nWe hope to make you and ADPI proud with our plans for positive and impactful change, while being the only candidates advocating for Greek Life!  :) https://tinyurl.com/rheanick21
-#Hi {list_names[i]} (again haha). \nSorry for bothering you again and the different phone number! Thank you so much for your support and vote last election cycle! \nVOTING CLOSES AT 8 PM for run-offs, and you just have to voice your opinion one more time! Please vote Rhea Kumar for SGA President and Nick Paschetto for SGA Vice President, in the link below. \nWe hope to make you and ADPI proud with our plans for positive and impactful change, while being the only candidates advocating for Greek Life! Vote R.N. :) https://tinyurl.com/rheanick21
-
-#Ref R:
-#Hi {list_names[i]} (again haha). \nSorry for the change in number from last week! Got your number from Seb and wanted to say thank you so much for the support and vote the last election cycle! \nVoting is now LIVE for the runoffs! Please vote Rhea Kumar for SGA President and Nick Paschetto for SGA Vice President one more time! We hope to have a lasting relationship with Refugee Revive and to create a more "perfect" Emory next year! \nIt takes a few seconds to vote using this link: https://tinyurl.com/rheanick21
