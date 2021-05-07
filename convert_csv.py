@@ -1,6 +1,6 @@
 def split_csv(file_name):
     ip_fd = open(file_name, 'r')
-    writer = open('Raoul_write.txt', 'w')
+    writer = open('file_name_write.txt', 'w')
     values = ip_fd.readlines()
     for val in values:
         if val:
@@ -9,6 +9,6 @@ def split_csv(file_name):
     writer.close()
 
 if __name__ == "__main__":
-    split_csv('names_Raoul.txt')
+    split_csv('file_name.txt')
 
 #Use readlines and you will get a list with all the names
